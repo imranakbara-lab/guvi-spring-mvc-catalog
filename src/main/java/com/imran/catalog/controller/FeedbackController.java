@@ -20,14 +20,14 @@ public class FeedbackController {
 
     @GetMapping("/feedback")
     public String feedbackForm(Model model) {
-        model.addAttribute("feedback", new Feedback());
+        model.addAttribute("feedbackForm", new Feedback());
         return "feedback";
     }
 
     @PostMapping("/saveFeedback")
     @ResponseBody
-    public String saveFeedback(@ModelAttribute Feedback feedback) {
-        service.save(feedback);
+    public String saveFeedback(@ModelAttribute("feedbackForm") Feedback feedbackForm) {
+        service.save(feedbackForm);
         return "feedback saved!";
     }
 }
